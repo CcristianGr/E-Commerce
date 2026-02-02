@@ -1,0 +1,7 @@
+export const Layout = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <div className="flex flex-col items-center mt-20">
+            {children}
+        </div>
+    )
+}
