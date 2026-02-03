@@ -14,7 +14,11 @@ export const Home = () => {
     
   return (
         <Layout>
-            <Cards data={items}/>
+            <div className="grid grid-cols-4 gap-4 p-4">
+                {items?.map((item: any) => (
+                    <Cards key={item.id} data={item} />
+                ))}
+            </div>
             <ProductDetail/>
         </Layout>  
     )
