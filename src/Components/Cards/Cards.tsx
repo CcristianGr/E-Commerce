@@ -32,12 +32,12 @@ export const Cards = ({ data }: CardsProps) => {
                        <PlusIcon className="h-4 w-4" />
                 </div>
                 <img 
-                    src={data.images?.[0]} 
+                    src={data.image} 
                     alt={data.title} 
-                    className="w-full h-full object-cover rounded-lg cursor-pointer"
+                    className="w-full h-full object-contain rounded-lg cursor-pointer"
                     onClick={() => showProduct(data)}
                 />
-                <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">{data.category?.name}</span>
+                <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">{data.category}</span>
             </figure>
             <p className="flex justify-between">
                 <span>{data.title}</span>

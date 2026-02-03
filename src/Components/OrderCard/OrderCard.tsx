@@ -12,7 +12,7 @@ export const OrderCard = (props: OrderCardProps) => {
         <div className="flex justify-between items-center">
             <div className='flex items-center gap-2'>
                 <figure className='w-20 h-20'>
-                    <img className="w-full h-full object-cover rounded-lg" src={props.imageUrl} alt={props.title} />
+                    <img className="w-full h-full object-contain rounded-lg" src={props.imageUrl} alt={props.title} />
                 </figure>
                 <p className='text-sm font-light'>{props.title}</p>
             </div>
