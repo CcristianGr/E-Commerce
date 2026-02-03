@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <ShoppingCartProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/React-Project">
         <NavBar/>
         <AppRoutes />
         <CheckOutSideM />
