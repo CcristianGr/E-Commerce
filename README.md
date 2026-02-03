@@ -262,15 +262,6 @@ Si el despliegue falla:
 2. Revisa los logs en la pestaña **Actions** de tu repositorio
 3. Asegúrate de que el `base` en `vite.config.ts` coincida con el nombre del repositorio
 
-### Configuración Especial para GitHub Pages
-
-El proyecto incluye configuraciones especiales para que funcione correctamente en GitHub Pages:
-
-1. **`vite.config.ts`**: Configurado con `base: '/React-Project/'` para rutas correctas
-2. **`App.tsx`**: BrowserRouter con `basename="/React-Project"` para enrutamiento correcto
-3. **`public/404.html`**: Maneja redirecciones para rutas del lado del cliente
-4. **`index.html`**: Script de redirección para SPA (Single Page Application)
-
 ## 🤝 Contribuir
 
 1. Crear una rama de característica
