@@ -15,6 +15,11 @@ interface Product {
 export const CheckOutSideM = () => {
     const context = useContext(ShoppingCartContext)
 
+    const handleDelete = (id: string) => {
+        const filteredProducts = context.cartProducts.filter((product: Product) => product.id !== id)
+        context.setCartProducts(filteredProducts)
+    }
+
     return(
         <aside className={`${context.isCheckOutSideMenuOpen ? 'flex' : 'hidden'} h-[calc(100vh-68px)] top-17 w-90 flex flex-col fixed right-0 border border-black rounded-lg bg-white px-5 py-2`}>
             <div className="flex justify-between items-center mb-2 ">
@@ -25,16 +30,19 @@ export const CheckOutSideM = () => {
                     className="h-6 w-6 text-black cursor-pointer" />
                 </div>
             </div>
-            {
-                context.cartProducts.map((product: Product) => (
-                    <OrderCard
-                    key={product.id}
-                    title={product.title}
-                    imageUrl={product.image}
-                    price={product.price}
-                    />
-                ))
-            }
+            <div className='px-6 overflow-y-scroll'>
+                {
+                    context.cartProducts.map((product: Product) => (
+                        <OrderCard
+                        key={product.id}
+                        title={product.title}
+                        imageUrl={product.image}
+                        price={product.price}
+                        onDelete={() => handleDelete(product.id as string)}
+                        />
+                    ))
+                }
+            </div>
         </aside>
     )
 }
