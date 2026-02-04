@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context/ShoppingContext"
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { PlusIcon,CheckIcon } from '@heroicons/react/24/solid'
 
 interface CardsProps {
   data: any
@@ -23,14 +23,35 @@ export const Cards = ({ data }: CardsProps) => {
         context.openCheckOutSideMenu()
     }
 
-    return (
-        <div className="w-56 h-60 rounded-lg p-4 flex flex-col justify-">
-            <figure className="relative w-full h-4/5">
+    const renderIcon = (id:string) => {
+
+        const isInCart = context.cartProducts.filter((product:any) => product.id === id).length > 0
+
+        if (isInCart) {
+            return(
                 <div 
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
                     onClick={(e) => addProductsToCard(e, data)}>
-                       <PlusIcon className="h-4 w-4" />
+                    <CheckIcon className="h-4 w-4 text-green-500" />
                 </div>
+            )
+        }else{
+            return(
+                <div 
+                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
+                    onClick={(e) => addProductsToCard(e, data)}>
+                    <PlusIcon className="h-4 w-4" />
+                </div>
+            )
+        }
+
+
+    }
+
+    return (
+        <div className="w-56 h-60 rounded-lg p-4 flex flex-col justify-">
+            <figure className="relative w-full h-4/5">
+                {renderIcon(data.id)}
                 <img 
                     src={data.image} 
                     alt={data.title} 

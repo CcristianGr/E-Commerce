@@ -3,7 +3,8 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 interface OrderCardProps {
     title: string,
     imageUrl: string,
-    price: number
+    price: number,
+    onDelete: () => void
 }
 
 export const OrderCard = (props: OrderCardProps) => {
@@ -19,7 +20,9 @@ export const OrderCard = (props: OrderCardProps) => {
             <div className='flex items-center gap-2'>
                 <p className='text-lg font-medium'>${props.price}</p>
                 <XMarkIcon 
-                    className="h-6 w-6 text-black cursor-pointer" />
+                    onClick={props.onDelete}
+                    className="h-6 w-6 text-black cursor-pointer" 
+                    />
             </div>
         </div>
     )
