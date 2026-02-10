@@ -30,8 +30,7 @@ export const Cards = ({ data }: CardsProps) => {
         if (isInCart) {
             return(
                 <div 
-                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
-                    onClick={(e) => addProductsToCard(e, data)}>
+                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-not-allowed">
                     <CheckIcon className="h-4 w-4 text-green-500" />
                 </div>
             )
