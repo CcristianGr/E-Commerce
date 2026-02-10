@@ -41,7 +41,7 @@ export const CheckOutSideM = () => {
                     className="h-6 w-6 text-black cursor-pointer" />
                 </div>
             </div>
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
                 {
                     context.cartProducts.map((product: Product) => (
                         <OrderCard
