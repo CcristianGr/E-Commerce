@@ -2,15 +2,9 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from "../../Context/ShoppingContext"
 import { useContext } from "react"
 import { OrderCard } from '../OrderCard/OrderCard'
-
-interface Product {
-    id: number | string
-    title: string
-    image: string
-    price: number
-    description: string
-    category: string
-}
+import { totalPrice } from '../../Utils/Util-Ecommerce'
+import { Link } from 'react-router-dom'
+import type { Product } from '../../Utils/Types/ProyectTypes'
 
 export const CheckOutSideM = () => {
     const context = useContext(ShoppingCartContext)
@@ -18,6 +12,18 @@ export const CheckOutSideM = () => {
     const handleDelete = (id: string) => {
         const filteredProducts = context.cartProducts.filter((product: Product) => product.id !== id)
         context.setCartProducts(filteredProducts)
+    }
+
+    const handleCheckout = () => {
+        const orderToAdd = {
+            id: Math.random().toString(10).substring(2, 6),
+            date: new Date(),
+            products: context.cartProducts,
+            totalProducts: context.cartProducts.length,
+            totalPrice: totalPrice(context.cartProducts)
+        }
+        context.setOrder([...context.order, orderToAdd])
+        context.setCartProducts([])
     }
 
     return(
@@ -30,7 +36,7 @@ export const CheckOutSideM = () => {
                     className="h-6 w-6 text-black cursor-pointer" />
                 </div>
             </div>
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
                 {
                     context.cartProducts.map((product: Product) => (
                         <OrderCard
@@ -42,6 +48,15 @@ export const CheckOutSideM = () => {
                         />
                     ))
                 }
+            </div>
+            <div className='px-6 mt-4 border-t pt-4'>
+                <p className='flex justify-between items-center mb-2'>
+                    <span className='font-medium text-lg'>Total:</span>
+                    <span className='font-bold text-xl'>${totalPrice(context.cartProducts).toFixed(2)}</span>
+                </p>
+                <Link to="/my-orders/last">
+                    <button onClick={() => handleCheckout()} className='w-full bg-black text-white py-3 rounded-lg font-medium cursor-pointer'>Checkout</button>
+                </Link>
             </div>
         </aside>
     )
