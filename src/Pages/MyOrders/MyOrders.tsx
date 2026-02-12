@@ -9,10 +9,10 @@ export const MyOrders = () => {
     console.log(context.order)
     return (
         <Layout>
-            <div className="flex items-center justify-center relative w-80">
+            <div className="flex items-center justify-center relative w-80 mb-4">
                 <h1>My Orders</h1>
             </div>
-            <div className='flex flex-col w-80'>
+            <div className='flex flex-col w-100'>
                 {
                     context.order?.map((order:any) => (
                     <Link key={order.id} to={`/my-orders/${order.id}`}>
