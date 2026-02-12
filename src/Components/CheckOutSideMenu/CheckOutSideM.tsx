@@ -14,11 +14,6 @@ export const CheckOutSideM = () => {
         context.setCartProducts(filteredProducts)
     }
 
-    const handleDelete = (id: string) => {
-        const filteredProducts = context.cartProducts.filter((product: Product) => product.id !== id)
-        context.setCartProducts(filteredProducts)
-    }
-
     const handleCheckout = () => {
         const orderToAdd = {
             id: Math.random().toString(10).substring(2, 6),
@@ -40,19 +35,6 @@ export const CheckOutSideM = () => {
                     onClick={()=> context.closeCheckOutSideMenu()}
                     className="h-6 w-6 text-black cursor-pointer" />
                 </div>
-            </div>
-            <div className='px-6 overflow-y-scroll flex-1'>
-                {
-                    context.cartProducts.map((product: Product) => (
-                        <OrderCard
-                        key={product.id}
-                        title={product.title}
-                        imageUrl={product.image}
-                        price={product.price}
-                        onDelete={() => handleDelete(product.id as string)}
-                        />
-                    ))
-                }
             </div>
             <div className='px-6 overflow-y-scroll flex-1'>
                 {
