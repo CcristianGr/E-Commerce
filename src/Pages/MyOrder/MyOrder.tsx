@@ -10,12 +10,12 @@ import { ChevronLeftIcon } from "@heroicons/react/24/solid"
 export const MyOrder = () => {
     const context = useContext(ShoppingCartContext)
     const getPath = window.location.pathname.toString().split('/').slice(-1)[0]
-    console.log(getPath)
-    console.log(context.order?.slice(-1)[0])
-    console.log(context.order?.slice(-1))
-    console.log(context.order)
+    let orderCart = null
+    
     if(getPath === "last"){
-
+        orderCart = context.order?.slice(-1)[0]
+    }else{
+        orderCart = context.order?.find((order:any) => order.id === getPath)
     }
 
     return (
@@ -28,7 +28,7 @@ export const MyOrder = () => {
             </div>
             <div className='px-6 overflow-y-scroll flex-1'>
                 {
-                    context.order?.slice(-1)[0]?.products.map((product: Product) => (
+                    orderCart.products.map((product: Product) => (
                         <OrderCard
                         key={product.id}
                         title={product.title}   
