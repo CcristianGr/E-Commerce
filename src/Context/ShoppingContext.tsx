@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useMemo } from 'react'
 
 export const ShoppingCartContext = createContext<any>(null)
 
-const ShoppingCartProvider = ({children}: any) => {
+export const ShoppingCartProvider = ({children}: any) => {
 
   	const [count, setCount] = useState(0)
   
